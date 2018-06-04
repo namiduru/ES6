@@ -1,0 +1,246 @@
+INTRODUCTION TO GULP
+
+The following commands requires node package manager (npm)
+
+npm install -g gulp //Installing Gulp Globally
+npm install --save-dev gulp
+
+create gulpfile.js at root directory of the project
+//For Identifying your tasks
+
+//gulpfile.js
+var gulp = require('gulp'); // When we call gulp it will goes to gulp node package
+
+//(Default Task) You Just need to type gulp from command line
+//Task function takes default or task name and its callback function
+
+gulp.task('default', function(){
+    console.log('Hello I'm Gulp');
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+INSTALLING GULP PLUGIN
+
+Forexample:
+    installing gulp-uglify to make js unreadable and decreasing its file size
+
+npm install --save-dev gulp-uglify // Run at root level of the project
+
+var gulp = require('gulp'),
+    uglify = require('gulp-uglify'); //Requireing gump-uglify and assign to uglify
+
+
+- Run for these resources under the js folder that has js extension
+    * is the wilecard
+- Pipe allows to use function for specified files
+- Pipeing gulp.dest to save uglifed files to location that you specified
+
+gulp.task('default', function(){
+    gulp.src('js/*.js') // Loading Files
+    .pipe(uglify()) // Uglify Them
+    .pipe(gulp.dest('minjs')) // Save them in minjs
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+NAMING TASK FOR UNDERSTANDING BETTER
+
+gulp.task('mehmet', function(){
+    gulp.src('js/*.js') // Loading Files
+    .pipe(uglify()) // Uglify Them
+    .pipe(gulp.dest('minjs')) // Save them in minjs
+});
+
+//For Running These Type Of Commands You Should Run Following Command Below
+=> gulp mehmet
+
+//For Running More Than One Task You should decleare tasks like below
+
+gulp.task('task1', function(){
+    console.log('Hello I'm first Task');
+});
+
+gulp.task('task2', function(){
+    console.log('Hello I'm second Task');
+});
+
+gulp.task('default', ['task1', 'task2']);
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+WATCHING FILES WITH GULP
+
+gulp.task('task1', function(){
+    console.log('JS files under js folder has changed')
+});
+
+//Watch Task
+//Watching JS
+gulp.task('watch', function(){
+      gulp.watch('js/*.js', ['task1']));
+});
+
+=> gulp watch
+//Gulp will still running because in the task there were gulp.watch
+When you have modifed something task that you define will be running
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+COMPILING SASS WITH GULP
+
+npm install --save-dev gulp-ruby-sass // Package For Installing Ruby sass
+                                    //Example of SASS Transpiler Plugin
+
+var sass = require('gulp-ruby-sass');
+
+gulp.task('compileSass', function(){
+    gulp.src('scss/**/*.scss')
+    .pipe(sass({
+        style: 'compressed'
+    }))
+    .pipe(gulp.dest('css/'));
+});
+
+gulp.task('watch', function(){
+      gulp.watch('js/*.js', ['task1'])); // Watcing task1
+      gulp.watch('scss/**/*.scss', ['compileSass']); // It will compile sass files when something updated
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+PLUMBER (For Managing Errors With Plugin)
+
+npm install --save-dev gulp-plumber // gulp plumber extension
+
+var plumber = require('gulp-plumber');
+
+//There would be error while making operation on JS files
+//So we may add plumber function
+
+gulp.task('mehmet', function(){
+    gulp.src('js/*.js') // Loading Files
+        .pipe(plumber())
+        .pipe(uglify()) // Uglify Them
+        .pipe(gulp.dest('minjs')) // Save them in minjs
+});
+
+//There would be error while making operation on sass files
+//So we may add plumber function
+
+gulp.task('compileSass', function(){
+    gulp.src('scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass({
+            style: 'compressed'
+        }))
+        .pipe(gulp.dest('css/'));
+});
+
+//That plugin would say like you hey there is a error at you might want to fix it
+//And that will not break your gulp watch tool
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+Managing ERRORS WITHOUT PLUGINS
+
+gulp.task('compileSass', function(){
+    gulp.src('scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass({                //That would cause the error you need to use on
+            style: 'compressed'
+        })).on('error', console.error.bind(console)) //That is the way print errors to console
+        .pipe(gulp.dest('css/'));
+});
+
+
+//If you dont want to type .on('error', console.error.bind(console))
+//You might use as function
+
+function errorLog(error){
+    console.error.bind(error);
+    this.emit('end');
+}
+
+gulp.task('compileSass', function(){
+    gulp.src('scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass({                //That would cause the error you need to use on
+            style: 'compressed'
+        })).on('error', errorLog) //That is the way print errors to console
+        .pipe(gulp.dest('css/'));
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+LIVE RELOAD WITH GULP
+
+npm install --save-dev gulp-livereload
+
+var livereload = require('gulp-livereload');
+
+gulp.task('compileSass', function(){
+    gulp.src('scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass({                //That would cause the error you need to use on
+            style: 'compressed'
+        })).on('error', errorLog) //That is the way print errors to console
+        .pipe(gulp.dest('css/'));
+        .pipe(livereload()); // For Live Reload Plugin
+});
+
+gulp.task('watch', function(){
+
+      var server = livereload(); // For Running Reloading Plugin Server
+      //Syntax would be different in different versions like liveload.listen()
+
+      gulp.watch('js/*.js', ['task1'])); // Watcing task1
+      gulp.watch('scss/**/*.scss', ['compileSass']); // It will compile sass files when something updated
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+COMPRESSING IMAGES WITH GULP
+
+npm install --save-dev gulp-imagemin
+
+var imagemin = require('gulp-imagemin');
+
+gulp.task('image', function(){
+    gulp.src('img/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('build/img/'));
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+AUTOMATIC BROWSER PREFIXING
+
+//Adding CSS prefixes for helping browser compatibility
+
+npm install --save-dev gulp-autoprefixer
+
+var prefix = require(gulp-autoprefixer);
+
+gulp.task('compileSass', function(){
+    gulp.src('scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass({                //That would cause the error you need to use on
+            style: 'compressed' // use expanded parameter for avoiding compressing 
+        })).on('error', errorLog) // That is the way print errors to console
+        .pipe(prefix('last 2 versions')) // Prefix last Two versions
+        .pipe(gulp.dest('css/'));
+        .pipe(livereload()); // For Live Reload Plugin
+});
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
