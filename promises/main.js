@@ -67,3 +67,46 @@ fetch('')
     .catch((err)=>{
         console.log(err);
     });
+
+/*
+
+//Promises without arrow function syntax
+
+let promise = fetch("REST API");
+
+promise.then(fulfilled); //Fullfilled
+promise.catch(rejected); //Rejected
+
+// Or Your May Use Chaninig
+// promise.then(fulfilled).catch(rejected);
+
+//Or You May Call Like This
+//promise.then(fulfilled(data){
+//    console.log("Nays Here is your Data");
+//    console.log(data);
+//}).catch(rejected(data){
+//    console.log("No data is not coming :(:(");
+//});
+
+//Cleaning Up With Arrow Syntax
+//fetch("urlExample") || promise (first or second one)
+//    .then((data) => {console.log(data)})
+//    .catch((err) => {console.log(err)});
+
+//Taking Object
+fetch("urlExample")
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(err => console.log(err));
+
+
+function fulfilled(data){
+    console.log("Nays Here is your Data");
+    console.log(data);
+}
+
+fuction rejected(data){
+    console.log("No data is not coming :(:(");
+}
+
+*/

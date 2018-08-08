@@ -1,0 +1,22 @@
+WebPack is module bundler
+----------------------------
+
+Just like browserify
+  but has more features like bundling
+    images, css files ...
+
+As a example project
+  Here are two folders which are dist and src
+
+For installing webpack globally from node package manager
+  - npm install webpack -g
+  - npm instal webpack-dev-server
+For configuring webpack you need to create webpack.config.js  
+Use webpack --watch for watching changes in code
+
+Some browser does not compatible with ES2015(ES6)
+  So you need to transpile them into the ES5 with babel
+  - npm install --save-dev babel-core babel-loader babel-preset-es2015
+
+For saving saving your dependancy you need to indentify them in package.json
+  npm init for creating package.json
