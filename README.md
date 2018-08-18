@@ -1,3 +1,3 @@
 # JavaScript
 
-[CheatSheet](http://url.com/ "Title")
+[CheatSheet](https://htmlcheatsheet.com/js/)
