@@ -1,2 +1,3 @@
-# ES6
-ES6 Fundamentals
+# JavaScipt
+
+[CheatSheet](http://url.com/ "Title")
