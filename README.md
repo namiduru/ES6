@@ -1,3 +1,1 @@
-# JavaScript
-
-[CheatSheet](https://htmlcheatsheet.com/js/)
+# JavaScript Syntax
