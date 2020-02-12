@@ -1,3 +1,4 @@
+```
 /*Arrow Function
 
 Inspiration Comes From CofeeScript (transpiler)
@@ -34,3 +35,4 @@ function sayMyNameSecondTime(){
 sayMyName(); // output: MEHMET
 sayMyNameSecondTime(); // output: MEMO
 console.log(mehmet); // output: MEMO
+```
