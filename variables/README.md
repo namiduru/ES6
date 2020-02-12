@@ -1,3 +1,4 @@
+```
 /*
 "var" Functional scope variable "function(){}"
 */
@@ -61,3 +62,4 @@ If you decleare string with `` You dont need to add escape(\n) character for ins
 */
 
 console.log(`$(mehmet1) is $(mehmet2)`);//You can also do that With Template Literals(``) by using $ inside ``
+```
