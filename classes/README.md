@@ -1,3 +1,4 @@
+```
 /*
     Classes
 */
@@ -70,3 +71,4 @@ class Programmer extends Human{
 
 const mehmetP = new Programmer();
 console.log(mehmetP);
+```
