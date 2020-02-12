@@ -1,3 +1,4 @@
+```
 //Iterating Array Easily With ES6
 let colors = [`red`, `blue`, `yellow`, `orange`];
 
@@ -47,3 +48,4 @@ var fork = utensils.find((utensil) => {return utensil.name === `fork`});
 //findIndex() for finding index within the first match
 //filter() method for searching for the rest
 console.log(fork);
+```
