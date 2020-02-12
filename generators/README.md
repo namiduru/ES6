@@ -1,3 +1,4 @@
+```
 //ES6 Generators
   //* needed for declaring function as generator
 
@@ -24,3 +25,4 @@ for(let item of numgenerator){
     console.log(item);
 }
 */
+```
