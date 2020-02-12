@@ -1,3 +1,4 @@
+```
 let tree = {
     height: 50,
     color: `green`,
@@ -59,3 +60,4 @@ let person2 = person1;
 person2.name = `mert`;
 
 console.log(person1.name);//Would Give mert
+```
