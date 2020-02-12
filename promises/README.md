@@ -1,3 +1,4 @@
+```
 //Promises
 
 /*  States Of Promisses
@@ -110,3 +111,4 @@ fuction rejected(data){
 }
 
 */
+```
