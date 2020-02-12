@@ -1,3 +1,4 @@
+```
 // DESTRUCTURING
 
 let mehmet = {
@@ -32,3 +33,4 @@ let ordinaryNumberArrays = [1, 2, 3, 4, 5];
 let [first, second,, forth] = ordinaryNumberArrays; 
 //let [first, second, third, ...rest] = ordinaryNumberArray
 console.log(first, second, forth);
+```
