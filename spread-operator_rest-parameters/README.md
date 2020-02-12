@@ -1,3 +1,4 @@
+```
 /*
 Spread Operator and Rest Parameters
 */
@@ -44,3 +45,4 @@ let one = [1, 1 ,1];
 let two = [2, 2, 2, ...one];
 
 console.log(two); // output: 2, 2, 2, 1, 1, 1
+```
