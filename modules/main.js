@@ -7,21 +7,21 @@
 
 */
 
-import firstModule from './ordinaryModule';
-import {add, subtract} from './math';
+import firstModule from "./ordinaryModule";
+import { add, subtract } from "./math";
 
-add(1,2);
-subtract(1,2);
-firstModule('mehmet');
+add(1, 2);
+subtract(1, 2);
+firstModule("mehmet");
 
 //-------------------------------------------------
 //-------------------------------------------------
 
-import * as math from './math';
+import * as math from "./math";
 math.add(1, 2);
 math.subtract(1, 2);
 
-import greetings, {add, subtract} from './math';
+import greetings, { add, subtract } from "./math";
 greetings();
-add(1,2);
-subtract(1,2);
+add(1, 2);
+subtract(1, 2);
